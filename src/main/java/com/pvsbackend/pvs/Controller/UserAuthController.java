@@ -42,25 +42,21 @@ public class UserAuthController {
     public ResponseEntity<?> register(@RequestBody RegistrationRequest registrationRequest){
 
         //check if username exist in DB
-        if(userAuthRepository.existsByEmail(registrationRequest.getEmail())){
-            return new ResponseEntity<>("Email is already taken!", HttpStatus.BAD_REQUEST);
+        if(userAuthRepository.existsByUsername(registrationRequest.getUsername())){
+            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
         }
 
-        if(userAuthRepository.existsByPhonenumber(registrationRequest.getPhonenumber())){
-            return new ResponseEntity<>("An account is already registered in this Number!", HttpStatus.BAD_REQUEST);
+        if(userAuthRepository.existsByEmail(registrationRequest.getEmail())){
+            return new ResponseEntity<>("An account is already registered in this Email!", HttpStatus.BAD_REQUEST);
         }
 
         UserAuth user= new UserAuth(
+            registrationRequest.getUsername(),
             registrationRequest.getEmail(),
-            registrationRequest.getFirstname(),
-            registrationRequest.getMiddlename(),
-            registrationRequest.getLastname(),
-            registrationRequest.getPhonenumber(),
-            registrationRequest.getAddress(),
             passwordEncoder.encode(registrationRequest.getPassword())
         );
 
-        Role role = roleRepository.findByName("ROLE_CUSTOMER").get();
+        Role role = roleRepository.findByName("ROLE_ADMIN").get();
         user.setRoles(Collections.singleton(role));
 
         userAuthRepository.save(user);
@@ -72,8 +68,8 @@ public class UserAuthController {
     public ResponseEntity<?> registeruser(@RequestBody RegistrationRequest registrationRequest){
 
         //check if username exist in DB
-        if(userAuthRepository.existsByPhonenumber(registrationRequest.getPhonenumber())){
-            return new ResponseEntity<>("Phonenumber is already taken!", HttpStatus.BAD_REQUEST);
+        if(userAuthRepository.existsByUsername(registrationRequest.getUsername())){
+            return new ResponseEntity<>("Username is already taken!", HttpStatus.BAD_REQUEST);
         }
 
         if(userAuthRepository.existsByEmail(registrationRequest.getEmail())){
@@ -81,12 +77,8 @@ public class UserAuthController {
         }
 
         UserAuth user= new UserAuth(
+            registrationRequest.getUsername(),
             registrationRequest.getEmail(),
-            registrationRequest.getFirstname(),
-            registrationRequest.getMiddlename(),
-            registrationRequest.getLastname(),
-            registrationRequest.getPhonenumber(),
-            registrationRequest.getAddress(),
             passwordEncoder.encode(registrationRequest.getPassword())
         );
 
@@ -102,7 +94,7 @@ public class UserAuthController {
     public ResponseEntity<String> login (@RequestBody LoginRequest loginRequest){
         try{
             Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(loginRequest.getPhonenumberOrEmail(), loginRequest.getPassword())
+                new UsernamePasswordAuthenticationToken(loginRequest.getUsernameOrEmail(), loginRequest.getPassword())
             );
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -115,3 +107,4 @@ public class UserAuthController {
     
 }
 
+ 

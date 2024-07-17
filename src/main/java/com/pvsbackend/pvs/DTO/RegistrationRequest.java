@@ -2,50 +2,25 @@ package com.pvsbackend.pvs.DTO;
 
 public class RegistrationRequest {
 
+    private String username;
     private String email;
-    private String firstname;
-    private String middlename;
-    private String lastname;
-    private String phonenumber;
-    private String address;
     private String password;
 
     RegistrationRequest(){}
 
-    public RegistrationRequest(String email, String firstname, String middlename, String lastname, String phonenumber, String address, String password){
+    public RegistrationRequest(String username, String email, String password){
+        this.username = username;
         this.email = email;
-            this.firstname = firstname;
-            this.middlename = middlename;
-            this.lastname = lastname;
-            this.phonenumber = phonenumber;
-            this.address= address;
-            this.password = password;
+        this.password = password;
     }
 
     //getters
+    public String getUsername() {
+        return username;
+    }
 
     public String getEmail() {
         return email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getMiddlename() {
-        return middlename;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     public String getPassword() {
@@ -53,31 +28,17 @@ public class RegistrationRequest {
     }
 
     //setters
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setMiddlename(String middlename) {
-        this.middlename = middlename;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
+  

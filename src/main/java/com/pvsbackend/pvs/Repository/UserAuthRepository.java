@@ -7,13 +7,10 @@ import com.pvsbackend.pvs.Model.UserAuth;
 
 public interface UserAuthRepository extends JpaRepository<UserAuth, Long>{
     Optional<UserAuth> findByEmail(String email);
-    Optional<UserAuth> findByPhonenumber(String phonenumber);
-    Optional<UserAuth> findByPhonenumberOrEmail(String email, String phonenumber);
+    Optional<UserAuth> findByUsername(String username);
+    Optional<UserAuth> findByUsernameOrEmail(String email, String username);
 
     Boolean existsByEmail(String email);
-    Boolean existsByPhonenumber(String phonenumber);
-
-
-
+    Boolean existsByUsername(String username);
 
 }

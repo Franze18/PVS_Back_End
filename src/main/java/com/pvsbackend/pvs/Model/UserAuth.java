@@ -16,21 +16,16 @@ import jakarta.persistence.CascadeType;;
 
 @Entity
 @Table(uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"phonenumber"}),
+    @UniqueConstraint(columnNames = {"username"}),
     @UniqueConstraint(columnNames = {"email"})
 })
 public class UserAuth {
 
     private @Id
     @GeneratedValue Long id;
-     String email;
-     String firstname;
-     String middlename;
-     String lastname;
-     String phonenumber;
-     String address;
-     String password;
-
+    String username;
+    String email;
+    String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
@@ -42,42 +37,27 @@ public class UserAuth {
 
     UserAuth(){}
 
-    public UserAuth(String email, String firstname, String middlename, String lastname, String phonenumber, String address, String password){
+    
+
+    public UserAuth(String username, String email, String password) {
+        this.username = username;
         this.email = email;
-            this.firstname = firstname;
-            this.middlename = middlename;
-            this.lastname = lastname;
-            this.phonenumber = phonenumber;
-            this.address= address;
-            this.password = password;
+        this.password = password;
     }
-//getters
+
+
+
+    //getters
     public Long getId() {
         return id;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public String getEmail() {
         return email;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getMiddlename() {
-        return middlename;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     public String getPassword() {
@@ -87,30 +67,15 @@ public class UserAuth {
     public Set<Role> getRoles() {
         return roles;
     }
-//setters
+
+    //setters
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setMiddlename(String middlename) {
-        this.middlename = middlename;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public void setPassword(String password) {
@@ -120,8 +85,6 @@ public class UserAuth {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
 
-    
 
 }
