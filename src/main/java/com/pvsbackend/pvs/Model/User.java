@@ -19,6 +19,7 @@ public class User {
         private String password;
     
         User(){}
+
         public User(int id,String email, String firstname,String middlename, String lastname, String phonenumber, String address, String password){
             this.email = email;
             this.firstname = firstname;
@@ -55,30 +56,33 @@ public class User {
         }
 
         //setters
-        public void setId(Long id) {
-            this.id = id;
-        }
+
         public void setEmail(String email) {
             this.email = email;
         }
+
         public void setFirstname(String firstname) {
             this.firstname = firstname;
         }
+
         public void setMiddlename(String middlename) {
             this.middlename = middlename;
         }
+
         public void setLastname(String lastname) {
             this.lastname = lastname;
         }
+
         public void setPhonenumber(String phonenumber) {
             this.phonenumber = phonenumber;
         }
+
         public void setAddress(String address) {
             this.address = address;
         }
+
         public void setPassword(String password) {
             this.password = password;
-        }
-          
+        }            
      
 }

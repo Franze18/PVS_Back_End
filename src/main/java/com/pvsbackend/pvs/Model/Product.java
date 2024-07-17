@@ -11,19 +11,21 @@ public class Product {
     @GeneratedValue Long id;
     private String productName;
     private double price;
+    private String description;
+    private String url;
 
-    Product (){}
-    public Product(String productName, double price) {
+    Product(){}
+
+    public Product(String productName, double price, String description, String url) {
         this.productName = productName;
         this.price = price;
-
+        this.description = description;
+        this.url = url;
     }
 
-    //getters
     public Long getId() {
         return id;
     }
-
 
     public String getProductName() {
         return productName;
@@ -33,17 +35,31 @@ public class Product {
         return price;
     }
 
+    public String getDescription() {
+        return description;
+    }
 
-
-    
-
-//setters
+    public String getUrl() {
+        return url;
+    }
 
     public void setProductName(String productName) {
         this.productName = productName;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }
+
+
+
+    

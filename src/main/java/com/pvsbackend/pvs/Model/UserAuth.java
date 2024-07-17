@@ -2,17 +2,16 @@ package com.pvsbackend.pvs.Model;
 
 import java.util.Set;
 
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;;
+import jakarta.persistence.UniqueConstraint;;
 
 @Entity
 @Table(uniqueConstraints = {
@@ -51,7 +50,7 @@ public class UserAuth {
             this.address= address;
             this.password = password;
     }
-//getters
+    //getters
     public Long getId() {
         return id;
     }
@@ -87,8 +86,7 @@ public class UserAuth {
     public Set<Role> getRoles() {
         return roles;
     }
-//setters
-
+    //setters
     public void setEmail(String email) {
         this.email = email;
     }
@@ -120,8 +118,5 @@ public class UserAuth {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
-
-    
 
 }

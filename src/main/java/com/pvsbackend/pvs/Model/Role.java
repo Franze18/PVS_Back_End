@@ -24,10 +24,6 @@ public class Role {
         return name;
     }
     //setters
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
