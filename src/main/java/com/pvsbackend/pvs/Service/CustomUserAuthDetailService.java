@@ -24,10 +24,10 @@ public class CustomUserAuthDetailService implements UserDetailsService{
         this.userAuthRepository = userAuthRepository;
     }
 
-    public UserDetails loadUserByUsername(String phonenumberOrEmail) throws UsernameNotFoundException{
-        UserAuth users = userAuthRepository.findByPhonenumberOrEmail(phonenumberOrEmail, phonenumberOrEmail)
+    public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException{
+        UserAuth users = userAuthRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
             .orElseThrow(() ->
-                new UsernameNotFoundException("User not found with phonenumber or email" + phonenumberOrEmail));
+                new UsernameNotFoundException("User not found with username or email" + usernameOrEmail));
 
             Set<GrantedAuthority> authorities = users
 

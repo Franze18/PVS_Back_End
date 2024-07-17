@@ -13,6 +13,7 @@ public class Product {
     private double price;
 
     Product (){}
+    
     public Product(String productName, double price) {
         this.productName = productName;
         this.price = price;
@@ -20,10 +21,7 @@ public class Product {
     }
 
     //getters
-    public Long getId() {
-        return id;
-    }
-
+    
 
     public String getProductName() {
         return productName;
@@ -33,12 +31,11 @@ public class Product {
         return price;
     }
 
+    public Long getId() {
+        return id;
+    }
 
-
-    
-
-//setters
-
+    //setters
     public void setProductName(String productName) {
         this.productName = productName;
     }
