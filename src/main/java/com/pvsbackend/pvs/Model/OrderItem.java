@@ -14,47 +14,94 @@ public class OrderItem {
     @GeneratedValue Long id;
         private  Long orderId;
         private Long productId;
+        private int pnum;
+        private String desc;
+        private String pmeth;
+        private String msg;
         private int quantity ;
         private double price;
     
         OrderItem(){}
-        public OrderItem(Long orderId,Long productId,int quantity, double price){
+        public OrderItem(String desc, String msg, Long orderId, String pmeth, int pnum, double price, Long productId, int quantity) {
+            this.desc = desc;
+            this.msg = msg;
             this.orderId = orderId;
+            this.pmeth = pmeth;
+            this.pnum = pnum;
+            this.price = price;
             this.productId = productId;
             this.quantity = quantity;
-            this.price = price;
         }
         //getters
-        public Long getId(){
+
+        public Long getId() {
             return id;
         }
-        public Long getOrderId(){
+
+        public Long getOrderId() {
             return orderId;
         }
-        public Long getproductId(){
+
+        public Long getProductId() {
             return productId;
         }
-        public int getquantity(){
+
+        public int getPnum() {
+            return pnum;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public String getPmeth() {
+            return pmeth;
+        }
+
+        public String getMsg() {
+            return msg;
+        }
+
+        public int getQuantity() {
             return quantity;
         }
-        public double getprice(){
+
+        public double getPrice() {
             return price;
         }
-        
-    
-        //setters
 
-        public void setOrderId(Long orderId){
+        //setters
+        public void setOrderId(Long orderId) {
             this.orderId = orderId;
         }
-        public void setproductId(Long productId){
+
+        public void setProductId(Long productId) {
             this.productId = productId;
         }
-        public void setquantity(int quantity){
+
+        public void setPnum(int pnum) {
+            this.pnum = pnum;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+
+        public void setPmeth(String pmeth) {
+            this.pmeth = pmeth;
+        }
+
+        public void setMsg(String msg) {
+            this.msg = msg;
+        }
+
+        public void setQuantity(int quantity) {
             this.quantity = quantity;
         }
-        public void setprice(double price){
+
+        public void setPrice(double price) {
             this.price = price;
-        }  
-     
+        }
+        
+        
 }
